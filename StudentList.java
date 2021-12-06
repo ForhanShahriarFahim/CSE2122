@@ -7,7 +7,12 @@ public class StudentList
 	{
 
 //		Check arguments
-		if(args[0].equals("a")) 
+		if(args.length == 0 || args.length > 1)
+		{
+			System.out.println("Program terminated.\nPlease Enter a valid argument");
+			return;
+		}
+		else if(args[0].equals("a")) 
 		{
 			System.out.println("Loading data ...");			
 			try 
@@ -122,6 +127,10 @@ public class StudentList
 
 			} 
 			System.out.println("Data Loaded.");				
+		}
+		else 
+		{
+			System.out.println("Wrong argument");
 		}
 	}
 }
