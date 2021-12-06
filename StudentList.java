@@ -17,15 +17,15 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader s = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String r = s.readLine();
-				String i[] = r.split(",");			
-				for(String j : i) 
+				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				String fullLine  = bufferReader.readLine();
+				String studentNames[] = fullLine .split(",");			
+				for(String student : studentNames) 
 				{ 
-					System.out.println(j);
+					System.out.println(student);
 				}
 			} 
-			catch (Exception e)
+			catch (Exception exception)
 			{
 
 			} 
@@ -36,14 +36,14 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader s = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String r = s.readLine();			
-				String i[] = r.split(", ");	
-				Random x = new Random();
-				int y = x.nextInt(i.length);
-				System.out.println(i[y]);
+				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				String fullLine  = bufferReader.readLine();			
+				String studentNames[] = fullLine .split(", ");	
+				Random random = new Random();
+				int output = random.nextInt(studentNames.length);
+				System.out.println(studentNames[output]);
 				} 
-			catch (Exception e)
+			catch (Exception exception)
 			{
 
 			} 
@@ -54,16 +54,16 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedWriter s = new BufferedWriter(new FileWriter("students.txt", true));
-				String t = args[0].substring(1);
-				Date d = new Date();
-				String df = "dd/mm/yyyy-hh:mm:ss a";
-				DateFormat dateFormat = new SimpleDateFormat(df);
-				String fd= dateFormat.format(d);
-				s.write(", "+t+"\nList last updated on "+fd);
-				s.close();
+				BufferedWriter bufferReader = new BufferedWriter(new FileWriter("students.txt", true));
+				String addStudent  = args[0].substring(1);
+				Date date  = new Date();
+				String dateFormate = "dd/mm/yyyy-hh:mm:ss a";
+				DateFormat dateFormat = new SimpleDateFormat(dateFormate);
+				String formateDate= dateFormat.format(date );
+				bufferReader.write(", "+addStudent +"\nList last updated on "+formateDate);
+				bufferReader.close();
 			} 
-			catch (Exception e)
+			catch (Exception exception)
 			{
 
 			}
@@ -75,21 +75,21 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader s = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String r = s.readLine();
-				String i[] = r.split(", ");	
+				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				String fullLine  = bufferReader.readLine();
+				String studentNames[] = fullLine .split(", ");	
 				boolean done = false;
-				String t = args[0].substring(1);
-				for(int idx = 0; idx<i.length && !done; idx++) 
+				String addStudent = args[0].substring(1);
+				for(int idx = 0; idx<studentNames.length && !done; idx++) 
 				{
-					if(i[idx].equals(t)) 
+					if(studentNames[idx].equals(addStudent)) 
 					{
 						System.out.println("We found it!");
 						done=true;
 					}
 				}
 			} 
-			catch (Exception e)
+			catch (Exception exception)
 			{
 
 			} 
@@ -100,14 +100,14 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader s = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String D = s.readLine();
-				char a[] = D.toCharArray();			
+				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				String reader = bufferReader.readLine();
+				char charArray[] = reader.toCharArray();			
 				boolean in_word = false;
 				int count=0;
-				for(char c:a) 
+				for(char gap:charArray) 
 				{
-					if(c ==' ') 
+					if(gap ==' ') 
 					{
 						if (!in_word) 
 						{	
@@ -122,7 +122,7 @@ public class StudentList
 				}
 				System.out.println(count +" word(s) found ");
 			} 
-			catch (Exception e)
+			catch (Exception exception)
 			{
 
 			} 
