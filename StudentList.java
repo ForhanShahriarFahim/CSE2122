@@ -17,9 +17,8 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String fullLine  = bufferReader.readLine();
-				String studentNames[] = fullLine .split(",");			
+				String fullLine = loadData("students.txt");
+				String studentNames[] = fullLine.split(",");			
 				for(String student : studentNames) 
 				{ 
 					System.out.println(student);
@@ -36,9 +35,8 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String fullLine  = bufferReader.readLine();			
-				String studentNames[] = fullLine .split(", ");	
+				String fullLine = loadData("students.txt");		
+				String studentNames[] = fullLine.split(", ");	
 				Random random = new Random();
 				int output = random.nextInt(studentNames.length);
 				System.out.println(studentNames[output]);
@@ -75,9 +73,8 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String fullLine  = bufferReader.readLine();
-				String studentNames[] = fullLine .split(", ");	
+				String fullLine = loadData("students.txt");
+				String studentNames[] = fullLine.split(", ");	
 				boolean done = false;
 				String addStudent = args[0].substring(1);
 				for(int idx = 0; idx<studentNames.length && !done; idx++) 
@@ -100,8 +97,7 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try 
 			{
-				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String reader = bufferReader.readLine();
+				String reader = loadData("students.txt");
 				char charArray[] = reader.toCharArray();			
 				boolean in_word = false;
 				int count=0;
@@ -132,5 +128,19 @@ public class StudentList
 		{
 			System.out.println("Wrong argument");
 		}
+	}
+	public static String loadData(String filename)
+	{
+		try
+		{
+			BufferedReader fileStream = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
+			String line = fileStream.readLine();
+			return line;
+		}
+		catch(Exception e)
+		{
+
+		}
+		return "";
 	}
 }
